@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.kadirnar.VoiceHubStudio</id>
+  <name>VoiceHub Studio</name>
+  <name xml:lang="tr">VoiceHub Studio</name>
+  <summary>Local voice generation, cloning, design, editing, and training</summary>
+  <summary xml:lang="tr">Yerel ses üretimi, klonlama, tasarım, düzenleme ve eğitim</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>Apache-2.0</project_license>
+  <developer id="io.github.kadirnar">
+    <name>Kadir Nar</name>
+  </developer>
+  <description>
+    <p>VoiceHub Studio is a Linux workspace for running the TTS models registered by kadirnar/voicehub on CPU or GPU.</p>
+    <p xml:lang="tr">VoiceHub Studio, kadirnar/voicehub tarafından kaydedilen TTS modellerini CPU veya GPU üzerinde çalıştıran bir Linux çalışma alanıdır.</p>
+    <p>It includes model-aware synthesis controls, authorized voice cloning, natural-language voice design, reusable voice profiles, non-destructive audio editing, a persistent job queue, and model fine-tuning.</p>
+    <p xml:lang="tr">Modele duyarlı sentez denetimleri, izinli ses klonlama, doğal dille ses tasarımı, yeniden kullanılabilir ses profilleri, tahribatsız ses düzenleme, kalıcı iş kuyruğu ve model ince ayarı içerir.</p>
+  </description>
+  <launchable type="desktop-id">io.github.kadirnar.VoiceHubStudio.desktop</launchable>
+  <provides><binary>voicehub-studio</binary></provides>
+  <url type="homepage">https://github.com/kadirnar/voicehub-studio</url>
+  <url type="bugtracker">https://github.com/kadirnar/voicehub-studio/issues</url>
+  <content_rating type="oars-1.1" />
+  <releases><release version="0.2.0" date="2026-08-03" /></releases>
+</component>

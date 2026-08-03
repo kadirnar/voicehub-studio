@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d10" />
+    <meta
+      name="description"
+      content="Local-first voice generation, cloning, design, editing, and training with VoiceHub."
+    />
+    <title>VoiceHub Studio</title>
+    <link rel="icon" href="/static/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell" id="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="brand" href="#generate" aria-label="VoiceHub Studio home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 42 42" role="img">
+              <rect width="42" height="42" rx="13" fill="currentColor" opacity=".13" />
+              <path d="M9 22h3l2.1-8 3.4 16 3.2-20 3.5 24 3.3-18 2.4 10 2-4H34" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>VoiceHub</strong>
+            <small>Studio</small>
+          </span>
+          <span class="alpha-chip">alpha</span>
+        </a>
+
+        <nav class="nav-list" id="primary-nav">
+          <p class="nav-label">Create</p>
+          <a class="nav-item active" href="#generate" data-route="generate">
+            <span data-icon="sparkles"></span><span>Generate</span>
+          </a>
+          <a class="nav-item" href="#voices" data-route="voices">
+            <span data-icon="voices"></span><span>Voices</span>
+          </a>
+          <a class="nav-item" href="#editor" data-route="editor">
+            <span data-icon="waveform"></span><span>Audio editor</span>
+          </a>
+
+          <p class="nav-label">Build</p>
+          <a class="nav-item" href="#models" data-route="models">
+            <span data-icon="blocks"></span><span>Model library</span>
+          </a>
+          <a class="nav-item" href="#training" data-route="training">
+            <span data-icon="sliders"></span><span>Fine-tune</span>
+          </a>
+          <a class="nav-item" href="#queue" data-route="queue">
+            <span data-icon="queue"></span><span>Job queue</span>
+            <span class="nav-count hidden" id="queue-count">0</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+        <nav class="nav-list nav-bottom">
+          <a class="nav-item" href="#settings" data-route="settings">
+            <span data-icon="settings"></span><span>Settings</span>
+          </a>
+          <a class="nav-item" href="/api/docs" target="_blank" rel="noreferrer">
+            <span data-icon="book"></span><span>Local API</span>
+          </a>
+        </nav>
+        <div class="engine-card" id="engine-card">
+          <span class="status-dot checking"></span>
+          <div>
+            <strong>Checking engine</strong>
+            <small>Connecting locally…</small>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-column">
+        <header class="topbar">
+          <button class="mobile-menu icon-button" id="mobile-menu" aria-label="Open navigation">
+            <span data-icon="menu"></span>
+          </button>
+          <div class="breadcrumbs">
+            <span>VoiceHub Studio</span><i>/</i><strong id="route-title">Generate</strong>
+          </div>
+          <div class="topbar-actions">
+            <button class="command-trigger" id="command-trigger" type="button">
+              <span data-icon="search"></span>
+              <span>Search models and actions</span>
+              <kbd>Ctrl K</kbd>
+            </button>
+            <button class="hardware-pill" id="hardware-pill" type="button" title="Open compute settings">
+              <span class="status-dot checking"></span>
+              <span>Detecting compute</span>
+            </button>
+            <button class="language-button" id="language-toggle" type="button" aria-label="Change language" title="Change language">
+              <span id="language-toggle-label">TR</span>
+            </button>
+            <button class="icon-button" id="theme-toggle" type="button" aria-label="Toggle theme">
+              <span data-icon="sun"></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="page-scroll" id="page-scroll">
+          <div class="page-container" id="page" aria-live="polite">
+            <div class="initial-loader">
+              <div class="loader-wave"><i></i><i></i><i></i><i></i><i></i></div>
+              <p>Opening your voice workspace…</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="mobile-scrim" id="mobile-scrim"></div>
+    <div class="modal-layer" id="modal-layer" aria-live="assertive"></div>
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
+
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>

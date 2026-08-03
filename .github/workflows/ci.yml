@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Install CPU environment
+        run: ./scripts/bootstrap.sh --cpu
+      - name: Test and lint
+        run: |
+          .venv/bin/pytest
+          .venv/bin/ruff check .
+          .venv/bin/ruff format --check .
+          .venv/bin/python -m compileall -q voicehub_studio tests
+      - name: Build wheel
+        run: .venv/bin/python -m build --wheel

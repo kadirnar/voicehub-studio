@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=VoiceHub Studio
+Name[tr]=VoiceHub Studio
+GenericName=Voice Synthesis Studio
+GenericName[tr]=Ses Sentezi Stüdyosu
+Comment=Generate, clone, design, and edit voices locally with VoiceHub
+Comment[tr]=VoiceHub ile sesleri yerel olarak üretin, klonlayın, tasarlayın ve düzenleyin
+Exec=voicehub-studio --window
+Icon=io.github.kadirnar.VoiceHubStudio
+Terminal=false
+Categories=AudioVideo;Audio;
+Keywords=TTS;Speech;Voice;Audio;AI;
+Keywords[tr]=TTS;Konuşma;Ses;Yapay Zeka;
+StartupNotify=true
+StartupWMClass=VoiceHub Studio
+MimeType=audio/x-wav;audio/flac;audio/mpeg;audio/ogg;

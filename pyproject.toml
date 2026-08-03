@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "voicehub-studio"
+version = "0.2.0"
+description = "A local-first Linux studio for VoiceHub text-to-speech models"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = "Apache-2.0"
+authors = [{ name = "Kadir Nar" }]
+keywords = ["tts", "voice-cloning", "voice-design", "voicehub", "linux"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: X11 Applications",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+  "fastapi>=0.115,<1",
+  "numpy>=1.26,<3",
+  "pydantic>=2.10,<3",
+  "python-multipart>=0.0.20,<1",
+  "uvicorn[standard]>=0.34,<1",
+  "voicehub @ git+https://github.com/kadirnar/voicehub.git@566db6822d47a335c720efb9ea66d7bcb22a1a82",
+]
+
+[project.optional-dependencies]
+desktop = ["pywebview[qt]>=5.4,<7"]
+training = ["voicehub[training] @ git+https://github.com/kadirnar/voicehub.git@566db6822d47a335c720efb9ea66d7bcb22a1a82"]
+test = [
+  "build>=1.3,<2",
+  "httpx>=0.28,<1",
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+voicehub-studio = "voicehub_studio.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/kadirnar/voicehub-studio"
+Source = "https://github.com/kadirnar/voicehub-studio"
+Issues = "https://github.com/kadirnar/voicehub-studio/issues"
+VoiceHub = "https://github.com/kadirnar/voicehub"
+
+[tool.hatch.build.targets.wheel]
+packages = ["voicehub_studio"]
+
+[tool.hatch.build]
+include = [
+  "voicehub_studio/**/*.py",
+  "voicehub_studio/static/**",
+  "voicehub_studio/resources/**",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.coverage.run]
+branch = true
+source = ["voicehub_studio"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]
